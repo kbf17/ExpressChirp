@@ -19,13 +19,14 @@ app.route('/chirps')
     .get(function(req, res){
         res.sendFile(pathJSON);
     })
+
     .post(function(req, res){
         console.log('We are posting');
         console.log(req.body);
         fs.readFile(pathJSON, 'utf-8', function(err, file){
             if (err) {
                 res.status(500);
-                res.end('Cannot read files');
+                res.send('Cannot read files');
             }
             var data = JSON.parse(file);
             req.body.id = shortid.generate();
