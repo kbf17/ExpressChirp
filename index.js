@@ -95,7 +95,7 @@ app.route('/chirps/one/:id')
                         }
                     });
                 } else {
-                    res.writeHead(404);
+                    res.status(404);
                 };
             };     
         });
@@ -112,7 +112,6 @@ app.route('/chirps/one/:id')
             console.log(id);
             var result;
             var data = JSON.parse(file);
-
             data.forEach(function(chirp){
                 if (chirp.id === id){
                     result = chirp;
